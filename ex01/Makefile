@@ -1,16 +1,14 @@
-NAME = megaphone
+NAME = phonebook
 
 CC = g++
 
 CPPFLAGS = -std=c++98 -Wall -Werror -Wextra
 
-BUILD_DIR = .build
+BUILD_DIR = .build/
 
-SRCS = megaphone.cpp
+SRCS = phonebook.cpp contact.cpp main.cpp utils.cpp
 
 OBJS = $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
-
-all: $(NAME)
 
 $(BUILD_DIR)/%.o : %.cpp
 	mkdir -p $(@D)
@@ -19,12 +17,14 @@ $(BUILD_DIR)/%.o : %.cpp
 $(NAME): $(OBJS)
 	$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
+all: $(NAME)
+
 clean:
 		rm -rf $(BUILD_DIR)
 
 fclean: clean
 		rm -rf $(NAME)
 
-re: fclean all
+re: fclean re
 
-.PHONY: clean fclean all
+.PHONY: all clean fclean
