@@ -66,6 +66,14 @@ void print_content() {
 
 }
 
+void print_table(std::string col1, std::string col2, std::string col3 std::string col4)
+{
+	std::cout << std::setw(10) << std::right << col1
+		  << std::setw(10) << std::right << col2
+		  << std::setw(10) << std::right << col3
+		  << std::setw(10) << std::right << col4 << std::endl;	  
+}
+
 bool do_command(std::string s) {
 	phonebook ph;
 

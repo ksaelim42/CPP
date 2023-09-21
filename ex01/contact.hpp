@@ -15,6 +15,11 @@ class contact
 		contact(void);
 		~contact();
 
+		std::string	get_fname;
+		std::string get_lname;
+		std::string get_nname;
+		std::string get_phone;
+		std::string get_secret;
 		void ShowContact();
 		void InsertContact();
 };

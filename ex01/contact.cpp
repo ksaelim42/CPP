@@ -6,6 +6,26 @@ contact::contact(void) {
 	return ;
 }
 
+std::string contact::get_fname() {
+	return (this->fname);
+}
+
+std::string contact::get_lname() {
+	return (this->lname);
+}
+
+std::string contact::get_nname() {
+	return (this->nname);
+}
+
+std::string contact::get_phone() {
+	return (this->phone);
+}
+
+std::string contact::get_secret() {
+	return (this->secret);
+}
+
 void contact::ShowContact() {
 	print_line("firstname	 : ", fname);
 	print_line("lastname	 : ", lname);

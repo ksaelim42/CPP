@@ -13,7 +13,7 @@ void phonebook::add_command() {
 
 void phonebook::search_command() {
 	if (this->size > 0) {
-
+		
 	} else
 		print_line("No Contact");
 }
