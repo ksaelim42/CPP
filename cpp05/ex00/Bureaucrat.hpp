@@ -30,7 +30,6 @@ class Bureaucrat
         int         getGrade() const;
         void        increaseGrade();
         void        decreaseGrade();
-        void        showInfo();
         int        validGrade(int grade);
 
         class GradeTooHighException : public std::exception {

@@ -6,7 +6,7 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(validGrade(grade))
 {
-	std::cout << "Bureaucrat<" << this->_name << ">: " << "has been Created !" << std::endl;
+	std::cout << "Bureaucrat<" << _name << ">: " << "has been Created !" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &r) : _name(r._name), _grade(r._grade) {}
@@ -15,32 +15,32 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &r)
 {
 	if (this != &r)
 	{
-		this->_grade = r._grade;
+		_grade = r._grade;
 	}
 	return (*this);
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat<" << this->_name << ">: " << "has been Destroyed" << std::endl;
+	std::cout << "Bureaucrat<" << _name << ">: " << "has been Destroyed" << std::endl;
 }
 
 //*********************************************************************//
 //----------------------- Puclic main member functions ----------------//
 //*********************************************************************//
 
-std::string Bureaucrat::getName() const { return this->_name; }
+std::string Bureaucrat::getName() const { return _name; }
 
-int Bureaucrat::getGrade() const { return this->_grade; }
+int Bureaucrat::getGrade() const { return _grade; }
 
 void Bureaucrat::increaseGrade()
 {
-	validGrade(--this->_grade);
+	validGrade(--_grade);
 }
 
 void Bureaucrat::decreaseGrade()
 {
-	validGrade(++this->_grade);
+	validGrade(++_grade);
 }
 
 int Bureaucrat::validGrade(int grade)
@@ -62,23 +62,38 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Grade Too Low");
 }
 
-void Bureaucrat::signAForm(AForm &r)
+void Bureaucrat::signForm(AForm &r)
 {
 	try
 	{
 		if (!r.getStatus())
 		{
 			r.beSigned(*this);
-			std::cout << GREEN << this->_name << " signed " << r.getName() << RESET << std::endl;
+			std::cout << GREEN << _name << " signed " << r.getName() << RESET << std::endl;
 		}
 		else
 			std::cout << GREEN << "AForm[" << r.getName() << "] has already been signed." << RESET << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << RED << this->_name << " couldn't sign " << r.getName();
+		std::cerr << RED << _name << " couldn't sign " << r.getName();
 		std::cerr << " because " << e.what() << RESET << std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm(AForm const& r)
+{
+	try
+	{
+		r.execute(*this);
+		std::cout << GREEN << this->_name << " executed " << r.getName() << RESET << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << this->_name << " couldn't execute " << r.getName();
+		std::cerr << " because " << e.what() << RESET << std::endl;
+	}
+	
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &r)

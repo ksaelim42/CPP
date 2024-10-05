@@ -47,6 +47,7 @@ int	main(void)
 		obj1.signForm(form);
 		std::cout << form << std::endl;
 		obj2.signForm(form);
+		std::cout << form << std::endl;
 
 		Bureaucrat	obj3("Who", 28);
         std::cout << ">> obj3 <<\n" << obj3 << std::endl;

@@ -7,6 +7,7 @@ int main()
         Bureaucrat A("A", 72);
         Bureaucrat B("B", 2);
 
+        std::cout << A;
         std::cout << B;
         B.increaseGrade();
         std::cout << B;
@@ -15,9 +16,9 @@ int main()
         B.increaseGrade();
         std::cout << B;
         
-        A.showInfo();
+        std::cout << A;
         A.decreaseGrade();
-        A.showInfo();
+        std::cout << A;
     }
     catch(const std::exception& e)
     {
