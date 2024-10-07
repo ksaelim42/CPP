@@ -1,36 +1,13 @@
 #include "ScalarConverter.hpp"
 
-int main()
+int	main(int ac, char **av)
 {
-    ScalarConverter test;
-
-    test.convert("42.0f");
-    std::cout << std::endl;
-    test.convert("42.12");
-     std::cout << std::endl;
-    test.convert("0");
-     std::cout << std::endl;
-
-    test.convert("Hello");
-    std::cout << std::endl;
-
-
-    test.convert("126");
-    std::cout << std::endl;
-
-    test.convert("130");
-    std::cout << std::endl;
-
-    test.convert("nan");
-    std::cout << std::endl;
-
-
-    test.convert("inf");
-    std::cout << std::endl;
-
-    test.convert("-inf");
-    std::cout << std::endl;
-    
-    test.convert("+inf");
-    std::cout << std::endl;
+	if (ac != 2)
+	{
+		std::cerr << RED << "Program take one parameter." << std::endl;
+		std::cerr << "<Usage>: ./convert inff" << RESET << std::endl;
+		return 1;
+	}
+	ScalarConverter::convert(av[1]);
+	return (0);
 }

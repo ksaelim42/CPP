@@ -1,10 +1,9 @@
-#ifndef DATA_H
-#define DATA_H
+#ifndef DATA_HPP
+#define DATA_HPP
 
 #include <string>
 
-struct Data
-{
+struct Data {
     std::string name;
 };
 

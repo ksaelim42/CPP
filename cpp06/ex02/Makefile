@@ -1,4 +1,4 @@
-NAME = Convert
+NAME = Dynamic
 
 CC = c++
 
